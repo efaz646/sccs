@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.sccs'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'info.picocli:picocli:4.7.6'
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+    implementation 'org.slf4j:slf4j-simple:2.0.16'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+application {
+    mainClass = 'com.sccs.cli.Main'
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
