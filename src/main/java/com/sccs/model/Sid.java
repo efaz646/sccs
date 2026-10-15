@@ -122,6 +122,9 @@ public class Sid implements Comparable<Sid> {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(components);
+        return Arrays.hashCode(components); // test
     }
 }
+
+//test
+//test
