@@ -32,4 +32,18 @@ public class DeltaRecord {
     public int getSeq() { return seq; }
     public int getPrevSeq() { return prevSeq; }
 
+    public String getFormattedDate() {
+        int y = date.getYear();
+        int m = date.getMonthValue();
+        int d = date.getDayOfMonth();
+        int h = date.getHour();
+        int mi = date.getMinute();
+        int s = date.getSecond();
+        return String.format("%02d/%02d/%02d %02d:%02d:%02d",
+                y % 100, m, d, h, mi, s);
+    }
+
+    public String getMetadata() {
+        return String.format("%s %s %s %s", sid, getFormattedDate(), author, comment);
+    }
 }
